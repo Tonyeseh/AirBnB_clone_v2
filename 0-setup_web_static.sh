@@ -3,8 +3,8 @@
 # creates some folders
 # and configures nginx to server that folder
 
-apt-get update
-apt-get -y install ngnix
+sudo apt-get update
+sudo apt-get -y install ngnix
 
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
