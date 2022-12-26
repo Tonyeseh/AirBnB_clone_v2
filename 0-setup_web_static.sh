@@ -4,7 +4,7 @@
 # and configures nginx to server that folder
 
 sudo apt-get update
-sudo apt-get -y install ngnix
+sudo apt-get -y install nginx
 
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
@@ -25,6 +25,8 @@ echo "server {
 
 	root /var/www/html;
 	index index.html index.htm index.nginx-debian.html;
+
+	add_header X-Served-By $HOSTNAME;
 
 	location /hbnb_static {
 		alias /data/web_static/current/;
