@@ -2,10 +2,8 @@
 from fabric.api import *
 from os.path import exists
 from datetime import datetime
-from fabric.api import local
-from sys import os
 
-env.hosts = ['18.206.207.45', '100.26.217.196']
+env.hosts = ['100.26.236.240', '34.207.237.123']
 
 
 def do_pack():
