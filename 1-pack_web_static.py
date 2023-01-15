@@ -15,8 +15,10 @@ def do_pack():
         arc_name = "versions/web_static_{}.tgz".format(time)
 
         local("mkdir -p versions")
-        arc_result = local("tar -cvzf {} web_static/".format(arc_name), capture=True)
-        
+        arc_result = local(
+                "tar -cvzf {} web_static/".format(arc_name),
+                capture=True)
+
         return arc_result
     except Exception:
         return None
