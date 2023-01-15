@@ -13,6 +13,6 @@ def hello_HBNB():
     """
     return "Hello HBNB!"
 
+
 if __name__ == "__main__":
- #   app.run()
-    print(__name__.__doc__)
+    app.run()
