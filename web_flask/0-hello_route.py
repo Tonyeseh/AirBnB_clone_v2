@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Contains a route that returns a string
 """
@@ -13,4 +14,5 @@ def hello_HBNB():
     return "Hello HBNB!"
 
 if __name__ == "__main__":
-    app.run()
+ #   app.run()
+    print(__name__.__doc__)
