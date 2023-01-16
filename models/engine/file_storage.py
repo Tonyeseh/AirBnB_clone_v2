@@ -9,26 +9,16 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        """
-        returns the list of objects of one type of class
-        """
-        from models.base_model import BaseModel
-        from models.user import User
-        from models.place import Place
-        from models.state import State
-        from models.city import City
-        from models.amenity import Amenity
-        from models.review import Review
-
-        if cls is not None:
-            if type(cls) == str:
-                cls = eval(cls)
-            cls_dict = {}
-            for key, value in self.__objects.items():
-                if type(value) == cls:
-                    cls_dict[key] = value
-            return cls_dict
-        return FileStorage.__objects
+        """Returns a dictionary of models currently in storage"""
+        if cls is None:
+            return FileStorage.__objects
+        else:
+            clsDict = {}
+            for key, value in FileStorage.__objects.items():
+                if value.__class__ == cls:
+                    clsDict[key] = value
+            return clsDict
+        # return FileStorage.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -68,15 +58,15 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        """
-        to delete obj from __objects if it’s inside -
-        if obj is equal to None, the method should not do anything
-        """
-        try:
-            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
-        except (AttributeError, KeyError):
-            pass
+        """ Deletes obj from __objects """
+
+        if obj is not None:
+            for key, value in FileStorage.__objects.items():
+                if value == obj:
+                    del (FileStorage.__objects[key])
+                    return
 
     def close(self):
-        """calls the reload() method for deserializing the JSON file to objects"""
-        self.reload()
+        """ Reloads the database """
+
+        return self.reload()
