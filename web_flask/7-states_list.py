@@ -19,7 +19,7 @@ def states_list():
     """
     returns a html page of all states for routes /states_list
     """
-    states = storage.all('State')
+    states = sorted(list(storage.all('State').values()), key=lambda x: x.name)
     return render_template('7-states_list.html', states=states)
 
 if __name__ == '__main__':
